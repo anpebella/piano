@@ -1,12 +1,10 @@
 from settings import act_color,white,black
 from pygame import draw
 
-def draw_key_effect(window,rect,pressed=False):
+def draw_key_effect(window,rect,x,y,index=0,pressed=False):
     if not pressed:
-        base_color=white
-    else:
-        base_color=act_color
-    border_color=black
+        base_color=img[index]
+    if pressed or rect.collidepoint(x,y):
+        base_color=hover[index]
+    window.blit(base_color,(rect.x,rect.y))
 
-    draw.rect(window,base_color,rect)
-    draw.rect(window,border_color,rect,3)
